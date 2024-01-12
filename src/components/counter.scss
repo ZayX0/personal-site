@@ -1,0 +1,18 @@
+.counter-div {
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.counter-div > p {
+  text-align: center;
+  color: green;
+}
+
+#useState-counter {
+  text-align: center;
+  color: white;
+}
