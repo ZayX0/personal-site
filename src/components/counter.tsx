@@ -5,7 +5,7 @@ export default function Counter() {
 
   return (
     <div className="counter-div">
-      <h2 id="useState-counter">Basic useState Counter</h2>
+      <h2 id="useState-counter">useState Counter</h2>
       <p>The current count is {count}</p>
       <div className="button-container">
         <button
