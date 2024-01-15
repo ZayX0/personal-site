@@ -13,10 +13,13 @@ export default function Bitcoin() {
       [name]: value,
     }));
   };
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(formData.priceStart);
-    console.log(formData.priceEnd);
+    const priceData = await getBitcoinPrice(
+      formData.priceStart,
+      formData.priceEnd
+    );
+    return priceData.results;
   };
   return (
     <>
@@ -52,6 +55,3 @@ export default function Bitcoin() {
     </>
   );
 }
-// Make API call to Polygon.io to get bitcoin price over past week
-// Look at World News API for getting bitcoin news for each day over week
-// new Date().toISOString().split("T")[0]

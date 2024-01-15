@@ -12,8 +12,8 @@
 }
 
 .mid-page-button {
-  display: flex;
+  position: absolute;
   text-align: center;
-  justify-content: center;
   margin-top: 1em;
+  left: 50%;
 }
