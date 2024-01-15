@@ -6,11 +6,15 @@ import "./components/index.css";
 import "./components/sidebar.scss";
 import "./components/counter.scss";
 import "./components/about.scss";
+import "./components/quotes.scss";
+import "./components/bitcoinAnalyzer.scss";
 import ErrorPage from "./error-page";
 import Counter from "./components/counter";
 import About from "./components/about";
 import ProjectList from "./components/projectList";
 import "./components/projectList.scss";
+import Quotes from "./components/quotes";
+import Bitcoin from "./components/bitcoinAnalyzer";
 
 // Turn projects link into a list of links
 const router = createBrowserRouter([
@@ -30,6 +34,14 @@ const router = createBrowserRouter([
       {
         path: "/counter",
         element: <Counter />,
+      },
+      {
+        path: "/quotes",
+        element: <Quotes />,
+      },
+      {
+        path: "/bitcoin",
+        element: <Bitcoin />,
       },
     ],
   },

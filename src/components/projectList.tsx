@@ -5,8 +5,18 @@ export default function ProjectList() {
     <div>
       <ul className="project-list">
         <li>
-          <Link to="/Counter" className="link-text">
+          <Link to="/counter" className="link-text">
             {"React Counter"}
+          </Link>
+        </li>
+        <li>
+          <Link to="/quotes" className="link-text">
+            {"Kanye Quotes"}
+          </Link>
+        </li>
+        <li>
+          <Link to="/bitcoin" className="link-text">
+            {"Bitcoin Price History"}
           </Link>
         </li>
       </ul>
