@@ -13,10 +13,13 @@ export default function Bitcoin() {
       [name]: value,
     }));
   };
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(formData.priceStart);
-    console.log(formData.priceEnd);
+    const priceData = await getBitcoinPrice(
+      formData.priceStart,
+      formData.priceEnd
+    );
+    console.log(priceData);
   };
   return (
     <>
