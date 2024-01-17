@@ -51,6 +51,8 @@ export default function Bitcoin() {
         {
           label: "Bitcoin Price",
           data: rawPriceData.results.map((data) => data.c),
+          fill: true,
+          backgroundColor: ["#FFD700"],
         },
       ],
     }));
@@ -90,7 +92,7 @@ export default function Bitcoin() {
         </button>
       </form>
       {hasSubmitted ? (
-        <div>
+        <div style={{ width: 900, margin: "auto", marginTop: "1em" }}>
           <LineChart chartData={priceData} />
         </div>
       ) : null}
