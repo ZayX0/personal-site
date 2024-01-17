@@ -12,8 +12,11 @@
 }
 
 .mid-page-button {
-  position: absolute;
-  text-align: center;
+  display: block;
+  margin: auto;
   margin-top: 1em;
-  left: 50%;
+}
+
+.line-chart-div {
+  width: 600;
 }

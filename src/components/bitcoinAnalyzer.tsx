@@ -1,11 +1,35 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import getBitcoinPrice from "../data/polygonCall";
+import LineChart from "./lineChart";
+import { Chart, CategoryScale } from "chart.js/auto";
+
+interface PriceDataObjectState {
+  labels: Array<Number>;
+  datasets: Array<Object>;
+}
 
 export default function Bitcoin() {
+  Chart.register(CategoryScale);
+  const ref = useRef<Chart>();
+
+  function updateChart() {
+    if (ref && ref.current) {
+      ref.current.update();
+    }
+  }
+
   const [formData, setFormData] = useState({
     priceStart: "",
     priceEnd: "",
   });
+
+  const [priceData, setPriceData] = useState<PriceDataObjectState>({
+    labels: [],
+    datasets: [],
+  });
+
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
   const handleDateChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -13,14 +37,29 @@ export default function Bitcoin() {
       [name]: value,
     }));
   };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const priceData = await getBitcoinPrice(
+    const rawPriceData = await getBitcoinPrice(
       formData.priceStart,
       formData.priceEnd
     );
-    return priceData.results;
+    setPriceData((prev) => ({
+      ...prev,
+      labels: rawPriceData.results.map((_data, index) => index + 1),
+      datasets: [
+        {
+          label: "Bitcoin Price",
+          data: rawPriceData.results.map((data) => data.c),
+          fill: true,
+          backgroundColor: ["#FFD700"],
+        },
+      ],
+    }));
+    updateChart();
+    setHasSubmitted(true);
   };
+
   return (
     <>
       <form id="bitcoinDates" onSubmit={handleSubmit}>
@@ -52,6 +91,11 @@ export default function Bitcoin() {
           Submit
         </button>
       </form>
+      {hasSubmitted ? (
+        <div style={{ width: 900, margin: "auto", marginTop: "1em" }}>
+          <LineChart chartData={priceData} />
+        </div>
+      ) : null}
     </>
   );
 }
