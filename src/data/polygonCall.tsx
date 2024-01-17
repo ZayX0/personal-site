@@ -1,12 +1,23 @@
-type Prices = {
+export type Prices = {
   adjusted: boolean;
   count: number;
   queryCount: number;
   requestId: string;
-  results: Array<Object>;
+  results: Array<Results>;
   resultsCount: number;
   status: string;
   ticker: string;
+};
+
+export type Results = {
+  c: number;
+  h: number;
+  l: number;
+  n: number;
+  o: number;
+  t: number;
+  v: number;
+  vw: number;
 };
 
 export default async function getBitcoinPrice(
@@ -21,5 +32,15 @@ export default async function getBitcoinPrice(
       "?adjusted=true&sort=asc&limit=120&apiKey=FIqoBDpeCscGfkRycpqzIzzeW762yDxw"
   );
   const data = await response.json();
-  return data;
+  const priceInfo: Prices = {
+    adjusted: data.adjusted,
+    count: data.count,
+    queryCount: data.queryCount,
+    requestId: data.request_id,
+    results: data.results,
+    resultsCount: data.resultsCount,
+    status: data.status,
+    ticker: data.ticker,
+  };
+  return priceInfo;
 }
