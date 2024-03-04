@@ -51,8 +51,8 @@ export default function Bitcoin() {
         {
           label: "Bitcoin Price",
           data: rawPriceData.results.map((data) => data.c),
-          fill: true,
-          backgroundColor: ["#FFD700"],
+          fill: false,
+          borderColor: ["#FFFFFF"],
         },
       ],
     }));
