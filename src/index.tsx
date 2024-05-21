@@ -16,6 +16,8 @@ import ProjectList from "./components/projectList";
 import "./components/projectList.scss";
 import Quotes from "./components/quotes";
 import Bitcoin from "./components/bitcoinAnalyzer";
+import { elements } from "chart.js";
+import Blog from "./components/blog";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
         path: "/bitcoin",
         element: <Bitcoin />,
       },
+      // {
+      //   path: "/blog",
+      //   element: <Blog />,
+      // },
     ],
   },
 ]);

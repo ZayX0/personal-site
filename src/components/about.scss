@@ -1,8 +1,9 @@
 .about {
   justify-content: center;
-  display: flex;
+  display: block;
 }
 
 .about > p {
+  display: inline-block;
   color: white;
 }
